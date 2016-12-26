@@ -1,24 +1,21 @@
-package cz.wicketstuff.sudoku.web.config;
+package cz.wicketstuff.sudoku.web;
 
 import javax.annotation.PostConstruct;
 
 import org.apache.wicket.Page;
-import org.apache.wicket.authroles.authentication.AbstractAuthenticatedWebSession;
-import org.apache.wicket.authroles.authentication.AuthenticatedWebApplication;
-import org.apache.wicket.authroles.authentication.pages.SignInPage;
-import org.apache.wicket.markup.html.WebPage;
+import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
-import cz.wicketstuff.sudoku.web.SudokuSession;
 import cz.wicketstuff.sudoku.web.page.SudokuHomePage;
+import de.agilecoders.wicket.core.Bootstrap;
 
 /**
  * @author Martin Strejc
  *
  */
-public class SudokuApplication extends AuthenticatedWebApplication implements ApplicationContextAware
+public class SudokuApplication extends WebApplication implements ApplicationContextAware
 {
 	
 	//private static final Logger logEx = LoggerFactory.getLogger(ExceptionMapper.class);
@@ -43,12 +40,14 @@ public class SudokuApplication extends AuthenticatedWebApplication implements Ap
 
 		getComponentInstantiationListeners().add(new SpringComponentInjector(this, context));
 		
+		Bootstrap.install(this);
+		
 //		HomePage.mount(this);
 //		InstitutePage.mount(this);
 //		GiftPage.mount(this);
 //		GiftMailSentPage.mount(this);
 //		GiftConfirmationPage.mount(this);
-//		
+		
 //		mountPage("secure/login", SignInPage.class);
 //		mountPage("secure/logout", SignOutPage.class);
 //		AdminPage.mount(this);
@@ -67,18 +66,6 @@ public class SudokuApplication extends AuthenticatedWebApplication implements Ap
 	{
 		this.context = context;
 
-	}
-
-	@Override
-	protected Class<? extends WebPage> getSignInPageClass()
-	{
-		return SignInPage.class;
-	}
-
-	@Override
-	protected Class<? extends AbstractAuthenticatedWebSession> getWebSessionClass()
-	{
-		return SudokuSession.class;
 	}
 
 	@Override
