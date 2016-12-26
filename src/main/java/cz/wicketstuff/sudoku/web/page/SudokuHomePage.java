@@ -30,28 +30,39 @@ public class SudokuHomePage extends WebPage
 	public SudokuHomePage()
 	{
 		List<ICellPopulator<ArrayList<Integer>>> columns = new ArrayList<>(9);
-		columns.add(new ICellPopulator<ArrayList<Integer>>()
-		{
-
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public void detach()
-			{
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void populateItem(Item<ICellPopulator<ArrayList<Integer>>> cellItem,
-				String componentId, IModel<ArrayList<Integer>> rowModel)
-			{
-				cellItem.add(new Label(componentId, () -> rowModel.getObject().get(1)));
-			}
-		});
+		columns.add(new Populator());
+		columns.add(new Populator());
+		columns.add(new Populator());
 		 
+		columns.add(new Populator());
+		columns.add(new Populator());
+		columns.add(new Populator());
+
+		columns.add(new Populator());
+		columns.add(new Populator());
+		columns.add(new Populator());
+
 		queue(new WebMarkupContainer("table"));
 		queue(new DataGridView<ArrayList<Integer>>("rows", columns, new ListDataProvider<ArrayList<Integer>>(generateData())));
+	}
+	
+	public static class Populator implements ICellPopulator<ArrayList<Integer>> {
+
+		private static final long serialVersionUID = 1L;
+		
+		@Override
+		public void detach()
+		{
+			// nothing to detach
+		}
+
+		@Override
+		public void populateItem(Item<ICellPopulator<ArrayList<Integer>>> cellItem,
+			String componentId, IModel<ArrayList<Integer>> rowModel)
+		{
+			cellItem.add(new Label(componentId, () -> rowModel.getObject().get(cellItem.getIndex())));
+		}
+		
 	}
 	
 	public static List<ArrayList<Integer>> generateData() {
