@@ -9,7 +9,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
 import cz.wicketstuff.sudoku.web.page.SudokuHomePage;
-import de.agilecoders.wicket.core.Bootstrap;
 
 /**
  * @author Martin Strejc
@@ -40,7 +39,7 @@ public class SudokuApplication extends WebApplication implements ApplicationCont
 
 		getComponentInstantiationListeners().add(new SpringComponentInjector(this, context));
 		
-		Bootstrap.install(this);
+		//Bootstrap.install(this);
 		
 //		HomePage.mount(this);
 //		InstitutePage.mount(this);
