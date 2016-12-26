@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Import;
  *
  */
 @Configuration
-@Import({})
+@Import({ApplicationContextConfig.class})
 @EnableAspectJAutoProxy
 public class SudokuConfig {
 	

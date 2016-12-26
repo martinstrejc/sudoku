@@ -3,7 +3,6 @@ package cz.wicketstuff.sudoku.web.config;
 import java.util.function.Supplier;
 
 import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
 
 import org.apache.wicket.Application;
 import org.apache.wicket.DefaultExceptionMapper;
@@ -12,7 +11,6 @@ import org.apache.wicket.RuntimeConfigurationType;
 import org.apache.wicket.authroles.authentication.AbstractAuthenticatedWebSession;
 import org.apache.wicket.authroles.authentication.AuthenticatedWebApplication;
 import org.apache.wicket.authroles.authentication.pages.SignInPage;
-import org.apache.wicket.authroles.authentication.pages.SignOutPage;
 import org.apache.wicket.core.request.handler.PageProvider;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.request.IExceptionMapper;
@@ -23,16 +21,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
-import cz.darujdetem.web.page.DesignPage;
-import cz.darujdetem.web.page.GiftConfirmationPage;
-import cz.darujdetem.web.page.GiftMailSentPage;
-import cz.darujdetem.web.page.GiftPage;
-import cz.darujdetem.web.page.HomePage;
-import cz.darujdetem.web.page.InstitutePage;
 import cz.darujdetem.web.page.MissingGiftException;
-import cz.darujdetem.web.page.admin.AdminPage;
 import cz.darujdetem.web.page.error.LinkExpiredPage;
-import cz.darujdetem.web.page.error.NotFoundPage;
 import cz.darujdetem.web.security.DarujDetemSession;
 import cz.wicketstuff.sudoku.web.page.SudokuHomePage;
 
@@ -45,8 +35,8 @@ public class SudokuApplication extends AuthenticatedWebApplication implements Ap
 	
 	private static final Logger logEx = LoggerFactory.getLogger(ExceptionMapper.class);
 	
-	@Resource(mappedName = "wicket.configuration")
-	private String wicketConfiguration;
+//	@Resource(mappedName = "wicket.configuration")
+//	private String wicketConfiguration;
 	
 	private ApplicationContext context;
 	
@@ -54,7 +44,7 @@ public class SudokuApplication extends AuthenticatedWebApplication implements Ap
 	
 	@PostConstruct
 	public void postConstruct() {
-		setConfigurationType("DEVELOPMENT".equalsIgnoreCase(wicketConfiguration) ? RuntimeConfigurationType.DEVELOPMENT : RuntimeConfigurationType.DEPLOYMENT);
+		// setConfigurationType("DEVELOPMENT".equalsIgnoreCase(wicketConfiguration) ? RuntimeConfigurationType.DEVELOPMENT : RuntimeConfigurationType.DEPLOYMENT);
 	}
 	
 	@Override
@@ -65,22 +55,22 @@ public class SudokuApplication extends AuthenticatedWebApplication implements Ap
 
 		getComponentInstantiationListeners().add(new SpringComponentInjector(this, context));
 		
-		HomePage.mount(this);
-		InstitutePage.mount(this);
-		GiftPage.mount(this);
-		GiftMailSentPage.mount(this);
-		GiftConfirmationPage.mount(this);
-		
-		mountPage("secure/login", SignInPage.class);
-		mountPage("secure/logout", SignOutPage.class);
-		AdminPage.mount(this);
-		
-		NotFoundPage.mount(this);
-		LinkExpiredPage.mount(this);
-		getApplicationSettings().setPageExpiredErrorPage(NotFoundPage.class);
-		getApplicationSettings().setInternalErrorPage(NotFoundPage.class);
-		
-		DesignPage.mount(this);
+//		HomePage.mount(this);
+//		InstitutePage.mount(this);
+//		GiftPage.mount(this);
+//		GiftMailSentPage.mount(this);
+//		GiftConfirmationPage.mount(this);
+//		
+//		mountPage("secure/login", SignInPage.class);
+//		mountPage("secure/logout", SignOutPage.class);
+//		AdminPage.mount(this);
+//		
+//		NotFoundPage.mount(this);
+//		LinkExpiredPage.mount(this);
+//		getApplicationSettings().setPageExpiredErrorPage(NotFoundPage.class);
+//		getApplicationSettings().setInternalErrorPage(NotFoundPage.class);
+//		
+//		DesignPage.mount(this);
 		
 	}
 
