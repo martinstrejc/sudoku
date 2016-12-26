@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:wicket="http://wicket.apache.org">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,7 +18,24 @@
     <![endif]-->
   </head>
   <body>
-    <h1>Hello, world!</h1>
+  
+    <h1>Wicket Sudoku</h1>
+    
+    <table wicket:id="table" class="table table-bordered">
+    
+		<tr wicket:id="rows">
+			<td wicket:id="cells">
+				<span wicket:id="cell"> </span>
+			</td>
+		</tr>
+             
+    	<tr>
+    		<td>Col</td>
+    		<td>Col</td>
+    		<td>Col</td>
+    	</tr>
+    </table>
+    
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

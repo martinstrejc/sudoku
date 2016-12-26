@@ -31,7 +31,7 @@
 		<appender-ref ref="STDOUT" />
 	</logger>
 	
-	<logger name="cz.darujdetem.web" level="DEBUG" additivity="false">
+	<logger name="cz.wicketstuff.sudoku" level="DEBUG" additivity="false">
 		<appender-ref ref="STDOUT" />
 	</logger>
 	
