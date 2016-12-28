@@ -48,7 +48,7 @@ public class Cell
 	
 	public boolean isCalculated()
 	{
-		return !initial;
+		return !initial && hasValue();
 	}
 	
 	public boolean hasValue() {
