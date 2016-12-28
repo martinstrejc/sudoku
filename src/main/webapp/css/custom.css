@@ -29,6 +29,12 @@ table.sudoku td.calculated
 	color: #0000ff;
 }
 
+table.sudoku td.options
+{
+	color: #c0c0c0;
+	font-style: italic;
+}
+
 .right-border-thick2 {
 	border-right-width: thick;
 	border-right-style: solid;

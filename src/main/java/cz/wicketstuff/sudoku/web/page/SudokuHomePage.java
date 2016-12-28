@@ -68,11 +68,29 @@ public class SudokuHomePage extends WebPage
 		{
 			Cell cell = rowModel.getObject().get(cellItem.getIndex());
 			cellItem.add(new AttributeModifier("class",
-				() -> cell.isInitial() ? "initial" : (cell.isCalculated() ? "calculated" : "")));
+				() -> cell.isInitial() ? "initial" : (cell.isCalculated() ? "calculated" : "options")));
 			cellItem
-				.add(new Label(componentId, () -> cell.hasValue() ? cell.getValue() : "..." ));
+				.add(new Label(componentId, () -> cell.hasValue() ? cell.getValue() : options2str(cell.getOptions()) ));
 		}
 
+	}
+	
+	public static String options2str(List<Integer> options) 
+	{
+		StringBuilder sb = new StringBuilder();
+		sb.append("(");
+		for (Integer i : options) 
+		{
+			sb.append(i);
+			sb.append(", ");
+		}
+		int len = sb.length();
+		if(len > 2)
+		{
+			sb.delete(len - 2, len);
+		}
+		sb.append(")");			
+		return sb.toString();
 	}
 
 	public static List<ArrayList<Cell>> generateData2b() 
@@ -96,7 +114,7 @@ public class SudokuHomePage extends WebPage
 		row[1] = new Cell(2, false, null);
 		row[2] = new Cell(3, false, null);
 		row[3] = new Cell(4);
-		row[4] = new Cell();
+		row[4] = new Cell(null, false, Arrays.asList(1, 2, 3, 4));
 		row[5] = new Cell(6);
 		row[6] = new Cell(7, false, null);
 		row[7] = new Cell(8);
