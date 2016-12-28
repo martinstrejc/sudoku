@@ -6,6 +6,7 @@ package cz.wicketstuff.sudoku.web.page;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.extensions.markup.html.repeater.data.grid.DataGridView;
 import org.apache.wicket.extensions.markup.html.repeater.data.grid.ICellPopulator;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -60,6 +61,7 @@ public class SudokuHomePage extends WebPage
 		public void populateItem(Item<ICellPopulator<ArrayList<Integer>>> cellItem,
 			String componentId, IModel<ArrayList<Integer>> rowModel)
 		{
+			cellItem.add(new AttributeModifier("class", () -> cellItem.getIndex() % 3 == 0 ? "right-border-thick" : ""));
 			cellItem.add(new Label(componentId, () -> rowModel.getObject().get(cellItem.getIndex())));
 		}
 		

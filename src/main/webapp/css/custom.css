@@ -1,0 +1,25 @@
+
+table.sudoku 
+{
+	border: 3px solid #000;
+}
+
+table.sudoku tr td
+{
+	border: 1px solid #000;
+}
+
+table.sudoku td:nth-child(3n)
+{
+	border-right-width: 3px;
+}
+
+table.sudoku tr:nth-child(3n) td
+{
+	border-bottom-width: 3px;
+}
+
+.right-border-thick2 {
+	border-right-width: thick;
+	border-right-style: solid;
+}
