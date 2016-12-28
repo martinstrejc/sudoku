@@ -19,6 +19,16 @@ table.sudoku tr:nth-child(3n) td
 	border-bottom-width: 3px;
 }
 
+table.sudoku td.initial
+{
+	font-weight: bold;
+}
+
+table.sudoku td.calculated
+{
+	color: #0000ff;
+}
+
 .right-border-thick2 {
 	border-right-width: thick;
 	border-right-style: solid;
